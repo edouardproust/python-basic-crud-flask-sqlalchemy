@@ -1,0 +1,30 @@
+<!-- templates/base.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.1/css/bootstrap.min.css" integrity="sha512-siwe/oXMhSjGCwLn+scraPOWrJxHlUgMBMZXdPe2Tnk3I0x3ESCoLz7WZ5NTH6SZrywMY+PB1cjyqJ5jAluCOg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<meta charset="UTF-8">
+	<title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+
+<div class="container py-3">
+
+	<h1>{{ self.title() }}</h1>
+
+	<!-- Alerts -->
+	{% if get_flashed_messages() %}
+		<div class="alert alert-primary alert-dismissable">
+			{% for message in get_flashed_messages() %}
+				<div>{{ message }}</div>
+			{% endfor %}
+		</div>
+	{% endif %}
+
+	<!-- Content -->
+	{% block content %}{% endblock %}
+</div>
+
+</body>
+</html>
